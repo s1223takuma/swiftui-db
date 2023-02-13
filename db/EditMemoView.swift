@@ -7,12 +7,15 @@
 
 //  EditMemoView.swift
 
+//  EditMemoView.swift
+
 import SwiftUI
+import CoreData
 
 struct EditMemoView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @State private var title: String = ""
-    @State private var content: String = ""
+    @State private var title: String
+    @State private var content: String
     private var memo: Memo
     
     init(memo: Memo) {
@@ -43,8 +46,12 @@ struct EditMemoView: View {
         memo.title = title
         memo.content = content
         memo.updatedAt = Date()
-
-        try? viewContext.save()
+        
+        do {
+            try viewContext.save()
+        } catch {
+            // handle error
+        }
     }
 }
 

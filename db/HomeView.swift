@@ -39,7 +39,6 @@ struct HomeView: View {
                             }
                     }.onDelete(perform: deleteMemo)
                 }
-                .navigationTitle("メモ")
                 .navigationBarTitleDisplayMode(.automatic)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {

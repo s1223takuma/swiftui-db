@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A11697792994877700B39065 /* EditPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11697782994877700B39065 /* EditPassView.swift */; };
+		A116977B2999412D00B39065 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A116977A2999412D00B39065 /* BackgroundView.swift */; };
 		A16D57D02970E0DC00F9116A /* dbApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16D57CF2970E0DC00F9116A /* dbApp.swift */; };
 		A16D57D22970E0DC00F9116A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16D57D12970E0DC00F9116A /* ContentView.swift */; };
 		A16D57D42970E0DD00F9116A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A16D57D32970E0DD00F9116A /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A11697782994877700B39065 /* EditPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPassView.swift; sourceTree = "<group>"; };
+		A116977A2999412D00B39065 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		A16D57CC2970E0DC00F9116A /* db.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = db.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16D57CF2970E0DC00F9116A /* dbApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dbApp.swift; sourceTree = "<group>"; };
 		A16D57D12970E0DC00F9116A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -125,9 +129,11 @@
 				A16D57CF2970E0DC00F9116A /* dbApp.swift */,
 				A16D57D12970E0DC00F9116A /* ContentView.swift */,
 				A16D580A2972AEFA00F9116A /* PasshomeView.swift */,
+				A116977A2999412D00B39065 /* BackgroundView.swift */,
 				A1EDE90B297D909200458BE6 /* addpassView.swift */,
 				A16D58082970F9B900F9116A /* HomeView.swift */,
 				A16D58062970E73200F9116A /* EditMemoView.swift */,
+				A11697782994877700B39065 /* EditPassView.swift */,
 				A16D58042970E48C00F9116A /* AddMemoView.swift */,
 				A16D57D32970E0DD00F9116A /* Assets.xcassets */,
 				A16D57D82970E0DD00F9116A /* Persistence.swift */,
@@ -292,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A116977B2999412D00B39065 /* BackgroundView.swift in Sources */,
 				A1EDE90C297D909200458BE6 /* addpassView.swift in Sources */,
 				A16D580B2972AEFA00F9116A /* PasshomeView.swift in Sources */,
 				A16D58092970F9B900F9116A /* HomeView.swift in Sources */,
@@ -301,6 +308,7 @@
 				A16D57DC2970E0DD00F9116A /* db.xcdatamodeld in Sources */,
 				A16D58072970E73200F9116A /* EditMemoView.swift in Sources */,
 				A1CAAAF2297E3413007EBE68 /* Pass+CoreDataProperties.swift in Sources */,
+				A11697792994877700B39065 /* EditPassView.swift in Sources */,
 				A16D58012970E1EB00F9116A /* Memo+CoreDataProperties.swift in Sources */,
 				A16D57D22970E0DC00F9116A /* ContentView.swift in Sources */,
 				A1CAAAF1297E3413007EBE68 /* Pass+CoreDataClass.swift in Sources */,

@@ -21,33 +21,49 @@ struct PasshomeView: View {
             NavigationView {
                 VStack{
                     List {
-                        ForEach(fetchedPassList) { pass in                                VStack {
-                            Text(pass.sitename ?? "")
-                                .font(.title)
-                                .frame(maxWidth: .infinity,alignment: .leading)
-                                .lineLimit(1)
-                        }
-                        
-                            if let url = URL(string:pass.url ?? "") {
-                                Link("\(pass.sitename ?? "")のURL", destination:url)
-                            }
-                        }.onDelete(perform: deleteMemo)
-                    }
-                    .navigationTitle("パスワード")
-                    .navigationBarTitleDisplayMode(.automatic)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            NavigationLink(destination: addpassView()) {
-                                Text("新規作成")
-                            }
-                        }
-                    }
-                    Button {
-                        dismiss()
-                                } label: {
-                                    Text("ホームに戻る")
+                        ForEach(fetchedPassList) { pass in
+                            NavigationLink(destination: EditPassView(pass: pass)){
+                                HStack{
+                                    VStack {
+                                        Text(pass.sitename ?? "")
+                                            .font(.system(size: 15, weight: .medium, design:
+                                                    .default))
+                                            .lineLimit(1)
+                                            .frame(maxWidth: .infinity,alignment: .leading)
+                                            .lineLimit(1)
+                                    }
                                 }
-                }
+                            }
+                            
+                        }.onDelete(perform: deleteMemo)
+                            .padding(.all, 10)
+                            .frame(maxWidth: .infinity, minHeight: 120)
+                            .background(Color.white.opacity(0.3))
+                            .cornerRadius(10)
+                            .listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
+                    }.listStyle(.plain)
+                        .navigationBarTitleDisplayMode(.automatic)
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                HStack{
+                                    NavigationLink(destination: addpassView()) {
+                                        Text("新規作成")
+                                            .foregroundColor(.black)
+                                    }
+                                }
+                            }
+                        }.background(fstBackgroundView())
+                        .toolbarBackground(Color.clear, for: .navigationBar)
+                    HStack{
+                        Button {
+                            dismiss()
+                        } label: {
+                            Text("ホームに戻る")
+                                .foregroundColor(.white)
+                        }
+                    }
+                    }.background(fstBackgroundView())
                 
                 
             }.navigationTitle("パスワード")
@@ -60,6 +76,7 @@ struct PasshomeView: View {
             // 保存を忘れない
                 try? viewContext.save()
             }
+    
     }
 
 
