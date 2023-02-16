@@ -53,8 +53,8 @@ struct PasshomeView: View {
                                     }
                                 }
                             }
-                        }.background(fstBackgroundView())
-                        .toolbarBackground(Color.clear, for: .navigationBar)
+                        }.background(passBackgroundView())
+                        .toolbarBackground(Color(white: 0, opacity: 0), for: .navigationBar)
                     HStack{
                         Button {
                             dismiss()
@@ -63,7 +63,7 @@ struct PasshomeView: View {
                                 .foregroundColor(.white)
                         }
                     }
-                    }.background(fstBackgroundView())
+                    }.background(passBackgroundView())
                 
                 
             }.navigationTitle("パスワード")

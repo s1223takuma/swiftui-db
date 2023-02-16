@@ -65,13 +65,14 @@ struct EditPassView: View {
             Spacer()
         }.padding()
         .navigationBarTitleDisplayMode(.inline)
+        .background(passBackgroundView())
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {saveMemo()}) {
                     Text("更新")
                 }
             }
-        }
+        }.background(passBackgroundView())
     }
     
     private func saveMemo() {

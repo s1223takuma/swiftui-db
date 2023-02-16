@@ -36,9 +36,19 @@ struct HomeView: View {
                                     Spacer()
                                 }
                                 }
+                           
                             }
                     }.onDelete(perform: deleteMemo)
+                        .padding(.all, 10)
+                        .frame(maxWidth: .infinity, minHeight: 50)
+                        .cornerRadius(10)
+                        .listRowBackground(Color.clear)
+                        .listRowSeparatorTint(.black)
+                    
+                    
+                    
                 }
+                .listStyle(.plain)
                 .navigationBarTitleDisplayMode(.automatic)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -47,17 +57,19 @@ struct HomeView: View {
                         }
                     }
                 }
+                .toolbarBackground(.clear, for: .navigationBar)
                 Button {
                     dismiss()
                             } label: {
                                 Text("ホームに戻る")
                             }
-            }
+            }.background(memoBackgroundView())
             
             
         }.navigationTitle("メモ")
             .navigationBarBackButtonHidden(true)
     }
+    
     private func deleteMemo(offsets: IndexSet) {
             offsets.forEach { index in
                 viewContext.delete(fetchedMemoList[index])

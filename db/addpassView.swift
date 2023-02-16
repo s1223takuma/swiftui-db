@@ -17,25 +17,63 @@ struct addpassView: View {
 
     var body: some View {
         VStack {
-            TextField("サイトの名前", text: $sitename)
-                .padding(10)
-                .font(.title)
-                .autocapitalization(.none)
+            HStack{
+                Text("サイトの名前")
+                    .padding()
+                TextField("", text: $sitename)
+                    .font(.title)
+                    .overlay(
+                        RoundedRectangle(cornerSize: CGSize(width: 8.0, height: 8.0))
+                            .stroke(Color.black, lineWidth: 1.0)
+                            .padding(-8.0)
+                    )
+                    .padding(20)
+                    .autocapitalization(.none)
+            }
             Spacer()
-            TextField("URL",text: $url)
-                .padding(20)
-                .autocapitalization(.none)
+            HStack{
+                Text("URL")
+                    .padding()
+                TextField("",text: $url)
+                    .overlay(
+                        RoundedRectangle(cornerSize: CGSize(width: 8.0, height: 8.0))
+                            .stroke(Color.black, lineWidth: 1.0)
+                            .padding(-8.0)
+                    )
+                    .padding(20)
+                    .autocapitalization(.none)
+            }
             Spacer()
-            TextField("サイトで使用するID",text: $siteid)
-                .padding(20)
-                .autocapitalization(.none)
+            HStack{
+                VStack{
+                    Text("サイトで使用するIDや")
+                    Text("メールアドレス")
+                }
+                TextField("",text: $siteid)
+                    .overlay(
+                        RoundedRectangle(cornerSize: CGSize(width: 8.0, height: 8.0))
+                            .stroke(Color.black, lineWidth: 1.0)
+                            .padding(-8.0)
+                    )
+                    .padding(16.0)
+                    .autocapitalization(.none)
+            }
             Spacer()
-            SecureField("パスワード",text: $password)
-                .padding(20)
-                .autocapitalization(.none)
-            Spacer()
+            HStack{
+                Text("パスワード")
+                    .padding()
+                SecureField("",text: $password)
+                    .overlay(
+                        RoundedRectangle(cornerSize: CGSize(width: 8.0, height: 8.0))
+                            .stroke(Color.black, lineWidth: 1.0)
+                            .padding(-8.0)
+                    )
+                    .padding(16.0)
+                    .autocapitalization(.none)
+            }
             
-        }
+        }.background(passBackgroundView())
+
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -43,7 +81,7 @@ struct addpassView: View {
                     Text("保存")
                 }
             }
-        }
+        }.background(passBackgroundView())
     }
     // 保存ボタン押下時の処理
     private func addPass() {

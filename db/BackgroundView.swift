@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct fstBackgroundView_Previews: PreviewProvider {
+struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
-        fstBackgroundView()
-        BackgroundView()
+        passBackgroundView()
+        memoBackgroundView()
         scndBackgroundView()
     }
 }
 
-struct fstBackgroundView: View {
+struct passBackgroundView: View {
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [.white, .gray]), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -26,10 +26,10 @@ struct fstBackgroundView: View {
 
 
 
-struct BackgroundView: View {
+struct memoBackgroundView: View {
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [.white, Color(red: 2, green: 0.58, blue: 0.23,opacity: 0.5)]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
         }
     }
