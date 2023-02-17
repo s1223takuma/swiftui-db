@@ -27,45 +27,84 @@ struct EditPassView: View {
     var body: some View {
         VStack {
             HStack{
-                TextField("サイトの名前", text: $sitename)
+                Text("サイトの名前")
+                    .bold()
+                    .padding()
+                TextField("", text: $sitename)
                     .font(.title)
-            }
-            HStack{
-                Text("url")
-                TextField("url", text: $url)
-                    .font(.body)
+                    .overlay(
+                        RoundedRectangle(cornerSize: CGSize(width: 8.0, height: 8.0))
+                            .stroke(Color.black, lineWidth: 1.0)
+                            .padding(-8.0)
+                    )
+                    .padding(20)
                     .autocapitalization(.none)
-                if let url = URL(string:pass.url ?? "") {
-                    Link("サイトに飛ぶ", destination:url)
-                        .padding()
-                }
-            }
-            HStack{
-                Text("ID")
-                TextField("サイトで使用するID",text: $userid)
-                    .font(.body)
-                    .autocapitalization(.none)
-                Button(action:{
-                    UIPasteboard.general.string = pass.userid ?? ""
-                }){
-                    Text("コピー")
-                }.padding()
-            }
-            HStack{
-                Text("パスワード")
-                SecureField("パスワード",text: $password)
-                    .font(.body)
-                    .autocapitalization(.none)
-                Button(action:{
-                    UIPasteboard.general.string = pass.password ?? ""
-                }){
-                    Text("コピー")
-                }.padding()
             }
             Spacer()
-        }.padding()
+            HStack{
+                Text("URL")
+                    .bold()
+                    .padding()
+                TextField("",text: $url)
+                    .overlay(
+                        RoundedRectangle(cornerSize: CGSize(width: 8.0, height: 8.0))
+                            .stroke(Color.black, lineWidth: 1.0)
+                            .padding(-8.0)
+                    )
+                    .padding(20)
+                    .autocapitalization(.none)
+                if let url = URL(string:pass.url ?? "") {
+                                    Link("サイトに飛ぶ", destination:url)
+                                        .padding()
+                                }
+            }
+            Spacer()
+            HStack{
+                VStack{
+                    Text("サイトで")
+                        .bold()
+                    Text("使用するID")
+                        .bold()
+                }
+                .padding()
+                TextField("",text: $userid)
+                    .overlay(
+                        RoundedRectangle(cornerSize: CGSize(width: 8.0, height: 8.0))
+                            .stroke(Color.black, lineWidth: 1.0)
+                            .padding(-8.0)
+                    )
+                    .padding(16.0)
+                    .autocapitalization(.none)
+                Button(action:{
+                                    UIPasteboard.general.string = pass.userid ?? ""
+                                }){
+                                    Text("コピー")
+                                }.padding()
+            }
+            Spacer()
+            HStack{
+                Text("パスワード")
+                    .bold()
+                    .padding()
+                SecureField("",text: $password)
+                    .overlay(
+                        RoundedRectangle(cornerSize: CGSize(width: 8.0, height: 8.0))
+                            .stroke(Color.black, lineWidth: 1.0)
+                            .padding(-8.0)
+                    )
+                    .padding(16.0)
+                    .autocapitalization(.none)
+                Button(action:{
+                                    UIPasteboard.general.string = pass.userid ?? ""
+                                }){
+                                    Text("コピー")
+                                }.padding()
+            }
+            Spacer()
+            
+        }.background(passBackgroundView())
+
         .navigationBarTitleDisplayMode(.inline)
-        .background(passBackgroundView())
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {saveMemo()}) {

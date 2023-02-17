@@ -35,6 +35,9 @@ struct AddMemoView: View {
     // 保存ボタン押下時の処理
     private func addMemo() {
         let memo = Memo(context: viewContext)
+        if title == "" {
+            title = "タイトルなし"
+        }
         memo.title = title
         memo.content = content
         memo.createdAt = Date()

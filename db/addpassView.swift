@@ -20,6 +20,7 @@ struct addpassView: View {
             HStack{
                 Text("サイトの名前")
                     .padding()
+                    .bold()
                 TextField("", text: $sitename)
                     .font(.title)
                     .overlay(
@@ -33,6 +34,7 @@ struct addpassView: View {
             Spacer()
             HStack{
                 Text("URL")
+                    .bold()
                     .padding()
                 TextField("",text: $url)
                     .overlay(
@@ -47,7 +49,9 @@ struct addpassView: View {
             HStack{
                 VStack{
                     Text("サイトで使用するIDや")
+                        .bold()
                     Text("メールアドレス")
+                        .bold()
                 }
                 TextField("",text: $siteid)
                     .overlay(
@@ -61,6 +65,7 @@ struct addpassView: View {
             Spacer()
             HStack{
                 Text("パスワード")
+                    .bold()
                     .padding()
                 SecureField("",text: $password)
                     .overlay(

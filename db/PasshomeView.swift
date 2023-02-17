@@ -24,13 +24,19 @@ struct PasshomeView: View {
                         ForEach(fetchedPassList) { pass in
                             NavigationLink(destination: EditPassView(pass: pass)){
                                 HStack{
-                                    VStack {
+                                    VStack (alignment: .center){
                                         Text(pass.sitename ?? "")
-                                            .font(.system(size: 15, weight: .medium, design:
+                                            .font(.system(size: 40, weight: .medium, design:
                                                     .default))
                                             .lineLimit(1)
                                             .frame(maxWidth: .infinity,alignment: .leading)
                                             .lineLimit(1)
+                                        Spacer()
+                                        
+                                    Text(pass.userid ?? "")
+                                            .frame(width: 150) 
+                                            .lineLimit(1)
+                                            .frame(alignment: .bottom)
                                     }
                                 }
                             }
