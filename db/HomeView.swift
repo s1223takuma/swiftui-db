@@ -52,17 +52,18 @@ struct HomeView: View {
                 .navigationBarTitleDisplayMode(.automatic)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: AddMemoView()) {
-                            Text("新規作成")
+                        HStack{
+                            
                         }
                     }
-                }
+                }.background(memoBackgroundView())
                 .toolbarBackground(.clear, for: .navigationBar)
-                Button {
-                    dismiss()
-                            } label: {
-                                Text("ホームに戻る")
-                            }
+                NavigationLink(destination: AddMemoView()) {
+                    Text("新規作成")
+                        .foregroundColor(.black)
+                }
+                
+
             }.background(memoBackgroundView())
             
             

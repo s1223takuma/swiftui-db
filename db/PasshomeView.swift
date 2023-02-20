@@ -24,19 +24,13 @@ struct PasshomeView: View {
                         ForEach(fetchedPassList) { pass in
                             NavigationLink(destination: EditPassView(pass: pass)){
                                 HStack{
-                                    VStack (alignment: .center){
+                                    VStack {
                                         Text(pass.sitename ?? "")
-                                            .font(.system(size: 40, weight: .medium, design:
+                                            .font(.system(size: 15, weight: .medium, design:
                                                     .default))
                                             .lineLimit(1)
                                             .frame(maxWidth: .infinity,alignment: .leading)
                                             .lineLimit(1)
-                                        Spacer()
-                                        
-                                    Text(pass.userid ?? "")
-                                            .frame(width: 150) 
-                                            .lineLimit(1)
-                                            .frame(alignment: .bottom)
                                     }
                                 }
                             }
@@ -53,23 +47,16 @@ struct PasshomeView: View {
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 HStack{
-                                    NavigationLink(destination: addpassView()) {
-                                        Text("新規作成")
-                                            .foregroundColor(.black)
-                                    }
+                                    
                                 }
                             }
                         }.background(passBackgroundView())
                         .toolbarBackground(Color(white: 0, opacity: 0), for: .navigationBar)
-                    HStack{
-                        Button {
-                            dismiss()
-                        } label: {
-                            Text("ホームに戻る")
-                                .foregroundColor(.white)
-                        }
+                    NavigationLink(destination: addpassView()) {
+                        Text("新規作成")
+                            .foregroundColor(.black)
                     }
-                    }.background(passBackgroundView())
+                }.background(passBackgroundView())
                 
                 
             }.navigationTitle("パスワード")

@@ -27,16 +27,20 @@ struct EditMemoView: View {
     var body: some View {
         VStack {
             TextField("タイトル", text: $title)
-                .font(.title)
+                .font(.title).padding(10)
+                .background(Color.white.opacity(0.01))
+                .cornerRadius(20)
+                .shadow(color: .gray, radius: 10)
             TextEditor(text: $content)
+                .scrollContentBackground(Visibility.hidden)
                 .font(.body)
-            Spacer()
+                .background(memoBackgroundView())
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {saveMemo()}) {
-                    Text("保存")
+                    Text("更新")
                 }
             }
         }
