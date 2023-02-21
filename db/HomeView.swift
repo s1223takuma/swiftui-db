@@ -17,6 +17,13 @@ struct HomeView: View {
         sortDescriptors: [NSSortDescriptor(key: "updatedAt", ascending: false)],
         animation: .default
     ) var fetchedMemoList: FetchedResults<Memo>
+    @State var nowDate = Date()
+    @State var dateText = ""
+    private let dateFormatter = DateFormatter()
+    init() {
+        dateFormatter.dateFormat = "YYYY/MM/dd(E) \nHH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "ja_jp")
+    }
     
     var body: some View {
         NavigationView {
@@ -26,6 +33,7 @@ struct HomeView: View {
                         NavigationLink(destination: EditMemoView(memo: memo)){
                             VStack {
                                 Text(memo.title ?? "")
+                                    .bold()
                                     .font(.title)
                                     .frame(maxWidth: .infinity,alignment: .leading)
                                     .lineLimit(1)
@@ -56,13 +64,26 @@ struct HomeView: View {
                             
                         }
                     }
-                }.background(memoBackgroundView())
+                }
                 .toolbarBackground(.clear, for: .navigationBar)
                 NavigationLink(destination: AddMemoView()) {
-                    Text("新規作成")
+                    Text("＋")
+                        .font(.title)
+                        .padding()
                         .foregroundColor(.black)
-                }
+                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.black, lineWidth: 1))
+                }.listRowBackground(Color.clear)
                 
+                .toolbar {
+                    Text(dateText.isEmpty ? "\(dateFormatter.string(from: nowDate))" : dateText)
+                        .onAppear {
+                        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                                self.nowDate = Date()
+                                dateText = "\(dateFormatter.string(from: nowDate))"
+                            }
+                        }
+                }.listRowBackground(Color.clear)
+                .toolbarBackground(.clear, for: .navigationBar)
 
             }.background(memoBackgroundView())
             

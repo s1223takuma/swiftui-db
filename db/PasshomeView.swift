@@ -16,6 +16,13 @@ struct PasshomeView: View {
             sortDescriptors: [NSSortDescriptor(key: "updatedAt", ascending: false)],
             animation: .default
         ) var fetchedPassList: FetchedResults<Pass>
+    @State var dateText = ""
+    @State var nowDate = Date()
+    private let dateFormatter = DateFormatter()
+    init() {
+        dateFormatter.dateFormat = "YYYY/MM/dd(E) \nHH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "ja_jp")
+    }
         
         var body: some View {
             NavigationView {
@@ -26,6 +33,7 @@ struct PasshomeView: View {
                                 HStack{
                                     VStack {
                                         Text(pass.sitename ?? "")
+                                            .bold()
                                             .font(.system(size: 15, weight: .medium, design:
                                                     .default))
                                             .lineLimit(1)
@@ -44,18 +52,25 @@ struct PasshomeView: View {
                             .listRowSeparator(.hidden)
                     }.listStyle(.plain)
                         .navigationBarTitleDisplayMode(.automatic)
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                HStack{
-                                    
-                                }
-                            }
-                        }.background(passBackgroundView())
-                        .toolbarBackground(Color(white: 0, opacity: 0), for: .navigationBar)
                     NavigationLink(destination: addpassView()) {
-                        Text("新規作成")
+                        Text("＋")
+                            .font(.title)
+                            .padding()
                             .foregroundColor(.black)
+                            .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.black, lineWidth: 1))
                     }
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                                Text(dateText.isEmpty ? "\(dateFormatter.string(from: nowDate))" : dateText)
+                                    .onAppear {
+                                        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                                            self.nowDate = Date()
+                                            dateText = "\(dateFormatter.string(from: nowDate))"
+                                        }
+                                    }
+                            }
+                    }
+                    .toolbarBackground(Color(white: 0, opacity: 0), for: .navigationBar)
                 }.background(passBackgroundView())
                 
                 

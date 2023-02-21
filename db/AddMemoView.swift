@@ -19,13 +19,16 @@ struct AddMemoView: View {
     var body: some View {
         VStack {
             TextField("タイトル", text: $title)
+                .multilineTextAlignment(.center)
                 .font(.title).padding(10)
                 .background(Color.white.opacity(0.01))
                 .cornerRadius(20)
                 .shadow(color: .gray, radius: 10)
+                .autocapitalization(.none)
             TextEditor(text: $content)
                 .scrollContentBackground(Visibility.hidden)
                 .font(.body)
+                .autocapitalization(.none)
                 .background(memoBackgroundView())
         }
         .navigationBarTitleDisplayMode(.inline)

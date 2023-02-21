@@ -46,6 +46,7 @@ struct EditPassView: View {
                     .bold()
                     .padding()
                 TextField("",text: $url)
+                    .keyboardType(.URL)
                     .overlay(
                         RoundedRectangle(cornerSize: CGSize(width: 8.0, height: 8.0))
                             .stroke(Color.black, lineWidth: 1.0)
